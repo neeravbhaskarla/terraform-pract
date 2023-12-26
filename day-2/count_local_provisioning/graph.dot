@@ -1,0 +1,32 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_instance.instance-1 (expand)" [label = "aws_instance.instance-1", shape = "box"]
+		"[root] aws_instance.instance-env (expand)" [label = "aws_instance.instance-env", shape = "box"]
+		"[root] aws_instance.myec2 (expand)" [label = "aws_instance.myec2", shape = "box"]
+		"[root] aws_network_interface_sg_attachment.ec2_sgattach (expand)" [label = "aws_network_interface_sg_attachment.ec2_sgattach", shape = "box"]
+		"[root] aws_security_group.sg_group (expand)" [label = "aws_security_group.sg_group", shape = "box"]
+		"[root] data.aws_ami.linux-ami (expand)" [label = "data.aws_ami.linux-ami", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.instance_envs" [label = "var.instance_envs", shape = "note"]
+		"[root] var.sg_ports" [label = "var.sg_ports", shape = "note"]
+		"[root] aws_instance.instance-1 (expand)" -> "[root] local.ami (expand)"
+		"[root] aws_instance.instance-1 (expand)" -> "[root] local.instance_types (expand)"
+		"[root] aws_instance.instance-1 (expand)" -> "[root] local.tags (expand)"
+		"[root] aws_instance.instance-env (expand)" -> "[root] data.aws_ami.linux-ami (expand)"
+		"[root] aws_instance.instance-env (expand)" -> "[root] var.instance_envs"
+		"[root] aws_instance.myec2 (expand)" -> "[root] data.aws_ami.linux-ami (expand)"
+		"[root] aws_network_interface_sg_attachment.ec2_sgattach (expand)" -> "[root] aws_instance.myec2 (expand)"
+		"[root] aws_network_interface_sg_attachment.ec2_sgattach (expand)" -> "[root] aws_security_group.sg_group (expand)"
+		"[root] aws_security_group.sg_group (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_security_group.sg_group (expand)" -> "[root] var.sg_ports"
+		"[root] data.aws_ami.linux-ami (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] local.ami (expand)" -> "[root] data.aws_ami.linux-ami (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.instance-1 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.instance-env (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_network_interface_sg_attachment.ec2_sgattach (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+
