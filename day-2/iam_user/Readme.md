@@ -1,9 +1,9 @@
 ## Graph visulaization of the connected components
-
-![[dot.svg]]
+![dot](https://github.com/neeravbhaskarla/terraform-pract/assets/57148990/f1e78ddd-803f-4260-874d-2e91a3a7e29c)
 
 #### graphviz
 To visualize the dependencies of the instances or resources with other resources, with the help of dot we can generate a svg file, which visualizes the relational graph of the resources. 
+
 
 ###### Installation
 
